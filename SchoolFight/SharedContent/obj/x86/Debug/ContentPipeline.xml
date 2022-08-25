@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Sounds\PlayerJump.wav</Source>
+      <Name>Sounds\PlayerJump</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\PlayerJump.xnb</Output>
+      <Time>2009-06-22T23:37:52+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\GemCollected.wma</Source>
+      <Name>Sounds\GemCollected</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\GemCollected.xnb</Output>
+      <Time>2009-05-14T10:57:56+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\MonsterKilled.wma</Source>
+      <Name>Sounds\MonsterKilled</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\MonsterKilled.xnb</Output>
+      <Time>2009-05-14T10:57:56+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\PlayerKilled.wma</Source>
+      <Name>Sounds\PlayerKilled</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\PlayerKilled.xnb</Output>
+      <Time>2009-05-14T10:57:56+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\ExitReached.wma</Source>
+      <Name>Sounds\ExitReached</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\ExitReached.xnb</Output>
+      <Time>2009-05-14T10:57:56+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Kick 1.mp3</Source>
+      <Name>Sounds\Kick 1</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Kick 1.xnb</Output>
+      <Time>2009-06-22T19:17:04+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Kick 2.mp3</Source>
+      <Name>Sounds\Kick 2</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Kick 2.xnb</Output>
+      <Time>2009-06-22T19:17:04+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Kick 3.mp3</Source>
+      <Name>Sounds\Kick 3</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Kick 3.xnb</Output>
+      <Time>2009-06-22T19:17:04+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Punch 1.mp3</Source>
+      <Name>Sounds\Punch 1</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Punch 1.xnb</Output>
+      <Time>2009-06-22T19:17:04+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Punch 2.mp3</Source>
+      <Name>Sounds\Punch 2</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Punch 2.xnb</Output>
+      <Time>2009-06-22T19:34:30+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Punch 3.mp3</Source>
+      <Name>Sounds\Punch 3</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Punch 3.xnb</Output>
+      <Time>2009-06-22T19:17:06+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Punch 4.mp3</Source>
+      <Name>Sounds\Punch 4</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\Sounds\Punch 4.xnb</Output>
+      <Time>2009-06-22T19:17:06+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>n:\High School Bruisical\SchoolFight\SchoolFight\SharedContent\</RootDirectory>
+      <LoggerRootDirectory>n:\High School Bruisical\SchoolFight\SchoolFight\</LoggerRootDirectory>
+      <IntermediateDirectory>n:\High School Bruisical\SchoolFight\SchoolFight\SharedContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>n:\High School Bruisical\SchoolFight\SchoolFight\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2009-05-28T00:16:14+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2009-05-28T00:16:16+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2009-05-28T00:16:26+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2009-05-28T00:16:12+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2009-05-28T00:16:06+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-06-24T11:53:35.5802926+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

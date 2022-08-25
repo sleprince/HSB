@@ -1,0 +1,3 @@
+D:\GameJam\SchoolFight\SchoolFight\HighResolutionContent\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Workspace\Game Jam\SchoolFight\SchoolFight\HighResolutionContent\obj\x86\Debug\ResolveAssemblyReference.cache
+n:\High School Bruisical\SchoolFight\SchoolFight\HighResolutionContent\obj\x86\Debug\ResolveAssemblyReference.cache
