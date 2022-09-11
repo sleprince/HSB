@@ -436,9 +436,10 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Standing backwars walk_2
       m_Hash: -1768594382
-      m_Sprite: {fileID: 180192542, guid: 2624000c9259e3d459dd2d060e4e3bfd, type: 3}
+      m_Sprite: {fileID: 5991350880330777934, guid: a66d8a292095b1f4d919c7b3aedf6e11,
+        type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 180192542, guid: 2624000c9259e3d459dd2d060e4e3bfd,
+      m_SpriteOverride: {fileID: 5991350880330777934, guid: a66d8a292095b1f4d919c7b3aedf6e11,
         type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
