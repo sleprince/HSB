@@ -91,7 +91,7 @@ public class SelectScreenManager : MonoBehaviour
             {
                 if (i < numberOfPlayers)
                 {
-                    if (Input.GetButtonUp("Fire2" + charManager.players[i].inputId))
+                    if (Input.GetButtonUp("B" + charManager.players[i].inputId))
                     {
                         plInterfaces[i].playerBase.hasCharacter = false;
                     }
@@ -199,7 +199,7 @@ public class SelectScreenManager : MonoBehaviour
         #endregion
 
         //if the user presses space, he has selected a character
-        if (Input.GetButtonUp("Fire1" + playerId))
+        if (Input.GetButtonUp("A" + playerId))
         {
             //make a reaction on the character, because why not
             pl.createdCharacter.GetComponentInChildren<Animator>().Play("Kick");

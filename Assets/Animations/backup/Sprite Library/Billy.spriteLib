@@ -53,7 +53,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: -1018576807, guid: 9839062ada346f746a78ea961e010dee,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 6
   - m_Name: Walk
     m_Hash: 765711723
@@ -108,7 +108,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 8688336722220556924, guid: b445e84cf4b8b374186aaf04bdd4d676,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 7
   - m_Name: Blocking
     m_Hash: -432685563
@@ -138,7 +138,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 2096662253, guid: b0c75d1a71211874ab17b832276ab2f2,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 4
   - m_Name: Blocking Crouch
     m_Hash: -1931164193
@@ -174,7 +174,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: -169479413, guid: f5b28d9eb719090408f808173a6c6e8a,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 5
   - m_Name: Crouch
     m_Hash: -2015693266
@@ -215,7 +215,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1944742144741792278, guid: f917f48031d8e1749833f22e2ddf57b8,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 5
   - m_Name: Crouch Attack
     m_Hash: 1291665139
@@ -256,7 +256,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1944742144741792278, guid: 4bc203b329653014387e70b91904b263,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 5
   - m_Name: Down
     m_Hash: -1127399675
@@ -304,7 +304,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1910597991684391606, guid: a66d8a292095b1f4d919c7b3aedf6e11,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 6
   - m_Name: Falling
     m_Hash: 998495048
@@ -317,7 +317,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 8088049508189702852, guid: a66d8a292095b1f4d919c7b3aedf6e11,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 1
   - m_Name: Grapple
     m_Hash: 891690766
@@ -428,7 +428,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: -8568302483069102832, guid: dcd57519765eadb49a1339dc46ee9e78,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 15
   - m_Name: Hit
     m_Hash: 1654612129
@@ -440,7 +440,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 180192542, guid: 2624000c9259e3d459dd2d060e4e3bfd,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 1
   - m_Name: Jump Attack
     m_Hash: 1886386442
@@ -488,7 +488,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1910597991684391606, guid: 4bb5e22dee7505340b65541082069e66,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 6
   - m_Name: Kick
     m_Hash: -1092128709
@@ -529,7 +529,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1944742144741792278, guid: 30a2b0ce7540efd4a967358c6b5e503d,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 5
   - m_Name: On Air
     m_Hash: -1299163135
@@ -542,7 +542,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: -4765070926449842240, guid: 41534e7a91d40b44da1d66d9325a58c6,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 1
   - m_Name: Punch A
     m_Hash: 945615942
@@ -590,7 +590,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1910597991684391606, guid: e0d55d6188c5ab8488fb28bc3642b1e4,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 6
   - m_Name: Punch B
     m_Hash: -1588222468
@@ -638,7 +638,7 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1910597991684391606, guid: d01865138e53d184ab17b43d01205321,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 6
   - m_Name: Jump
     m_Hash: 125937960
@@ -679,6 +679,6 @@ MonoBehaviour:
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1944742144741792278, guid: 41534e7a91d40b44da1d66d9325a58c6,
         type: 3}
-    m_FromMain: 1
+    m_FromMain: 0
     m_EntryOverrideCount: 5
   m_PrimaryLibraryGUID: 83735e41bc883684d877445e74f73a19

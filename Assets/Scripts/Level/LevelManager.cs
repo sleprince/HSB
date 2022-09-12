@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
     
-    WaitForSeconds oneSec;//we will be using this a lot so we don't want to create a new one everytime, saves a few bytes this
+    WaitForSeconds oneSec;//we will be using this a lot so we don't want to create a new one everytime, saves a few bytes this way
     public Transform[] spawnPositions;// the positions characters will spawn on
 
 
