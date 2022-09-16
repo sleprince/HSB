@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour {
     public Transform[] spawnPositions;// the positions characters will spawn on
 
 
-    CameraManager camM;
+    //CameraManager camM;
     CharacterManager charM;
     LevelUI levelUI;//we store ui elements here for ease of access
 
@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour {
         //get the references from the singletons
         charM = CharacterManager.GetInstance();
         levelUI = LevelUI.GetInstance();
-        camM = CameraManager.GetInstance();
+        //camM = CameraManager.GetInstance();
 
         //init the WaitForSeconds
         oneSec = new WaitForSeconds(1);
@@ -128,7 +128,7 @@ public class LevelManager : MonoBehaviour {
 
             charM.players[i].playerStates.healthSlider = levelUI.healthSliders[i];
 
-            camM.players.Add(go.transform);
+            //camM.players.Add(go.transform);
         }
 
         yield return null;
