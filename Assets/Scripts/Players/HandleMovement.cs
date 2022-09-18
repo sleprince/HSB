@@ -7,22 +7,30 @@ public class HandleMovement : MonoBehaviour {
     StateManager states;
     HandleAnimations anim;
 
+    
+
     public float acceleration = 30;
     public float airAcceleration = 15;
     public float maxSpeed = 60;
     public float jumpSpeed = 5;
     public float jumpDuration = 5;
+    public AudioClip jump0;
+    private AudioSource source;
     float actualSpeed;
     bool justJumped;
     bool canVariableJump;
     float jmpTimer;
 
-	void Start () {
+
+
+    void Start () {
         rb = GetComponent<Rigidbody2D>();
         states = GetComponent<StateManager>();
         anim = GetComponent<HandleAnimations>();
         rb.freezeRotation = true;
-	}
+        source = GetComponent<AudioSource>();
+        //clip = GetComponent<AudioClip>();
+    }
 	
 	void FixedUpdate ()
     {
@@ -60,7 +68,8 @@ public class HandleMovement : MonoBehaviour {
                 if (states.onGround)
                 {
                     anim.JumpAnim();
-
+                    source.PlayOneShot(jump0);
+                    //source.Play();
                     rb.velocity = new Vector3(rb.velocity.x, this.jumpSpeed);
                     jmpTimer = 0;
                     canVariableJump = true;

@@ -20,6 +20,7 @@ public class StateManager : MonoBehaviour {
     public bool dontMove;
     public bool onGround;
     public bool lookRight;
+    private AudioSource source;
 
     public Slider healthSlider;
     SpriteRenderer sRenderer;
@@ -42,6 +43,7 @@ public class StateManager : MonoBehaviour {
         handleMovement = GetComponent<HandleMovement>();
         sRenderer = GetComponentInChildren<SpriteRenderer>();
         blood = GetComponentInChildren<ParticleSystem>();
+        source = GetComponent<AudioSource>();
     }
 
 	void FixedUpdate () {
