@@ -14,13 +14,15 @@ public class HandleMovement : MonoBehaviour {
     public float maxSpeed = 60;
     public float jumpSpeed = 5;
     public float jumpDuration = 5;
-    public AudioClip jump0;
-    private AudioSource source;
+    //public AudioClip jump0;
+    //private AudioSource source;
     float actualSpeed;
     bool justJumped;
     bool canVariableJump;
     float jmpTimer;
 
+    //audio clips array.
+    public AudioClip[] myClips;
 
 
     void Start () {
@@ -28,8 +30,12 @@ public class HandleMovement : MonoBehaviour {
         states = GetComponent<StateManager>();
         anim = GetComponent<HandleAnimations>();
         rb.freezeRotation = true;
-        source = GetComponent<AudioSource>();
+        //source = GetComponent<AudioSource>();
         //clip = GetComponent<AudioClip>();
+
+        //load all BillyNoMates audio clips.
+        myClips = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
+
     }
 	
 	void FixedUpdate ()
@@ -67,9 +73,13 @@ public class HandleMovement : MonoBehaviour {
 
                 if (states.onGround)
                 {
+                    //play jump animation.
                     anim.JumpAnim();
-                    source.PlayOneShot(jump0);
-                    //source.Play();
+                    //play randomized jump sfx.
+                    //GetComponent<AudioSource>().clip = myClips[Random.Range(0, myClips.Length)];
+                    Completed.SoundManager.instance.RandomizeSfx(myClips[6],myClips[7]);
+                    //source.PlayOneShot(jump0);
+                    //actually jump, maybe add jump force here.
                     rb.velocity = new Vector3(rb.velocity.x, this.jumpSpeed);
                     jmpTimer = 0;
                     canVariableJump = true;
