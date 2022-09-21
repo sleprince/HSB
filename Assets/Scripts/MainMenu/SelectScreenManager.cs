@@ -17,6 +17,9 @@ public class SelectScreenManager : MonoBehaviour
     bool loadLevel; //if we are loading the level  
     public bool bothPlayersSelected;
 
+
+    public static int CharacterName;
+
     CharacterManager charManager;
 
     GameObject potraitPrefab;
@@ -208,6 +211,16 @@ public class SelectScreenManager : MonoBehaviour
             pl.playerBase.playerPrefab =
                charManager.returnCharacterWithID(pl.activePotrait.characterId).prefab;
 
+            //trying to make global character identification.
+            if (pl.createdCharacter.name == "Fighter Object(Clone)")
+            {
+                CharacterName = 1;
+                Debug.Log(CharacterName);
+            }
+
+
+            //Debug.Log(CharacterName);
+
             pl.playerBase.hasCharacter = true;
         }
     }
@@ -240,6 +253,7 @@ public class SelectScreenManager : MonoBehaviour
         }
         else
         {
+            //here is where I should change it, to loading level select scrren for 2Player mode.
             MySceneManager.GetInstance().RequestLevelLoad(SceneType.prog, "level_1");
         }
 

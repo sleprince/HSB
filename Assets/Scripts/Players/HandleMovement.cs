@@ -1,28 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class HandleMovement : MonoBehaviour {
 
     Rigidbody2D rb;
     StateManager states;
     HandleAnimations anim;
 
-    
-
     public float acceleration = 30;
     public float airAcceleration = 15;
     public float maxSpeed = 60;
     public float jumpSpeed = 5;
     public float jumpDuration = 5;
-    //public AudioClip jump0;
-    //private AudioSource source;
+
+    public GameObject Character;
+
     float actualSpeed;
     bool justJumped;
     bool canVariableJump;
     float jmpTimer;
 
     //audio clips array.
-    public AudioClip[] myClips;
+    static public AudioClip[] billyClips;
+    static public AudioClip[] blazerClips;
+
+    public AudioSource audioSource;
 
 
     void Start () {
@@ -30,11 +33,13 @@ public class HandleMovement : MonoBehaviour {
         states = GetComponent<StateManager>();
         anim = GetComponent<HandleAnimations>();
         rb.freezeRotation = true;
-        //source = GetComponent<AudioSource>();
-        //clip = GetComponent<AudioClip>();
 
-        //load all BillyNoMates audio clips.
-        myClips = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
+
+        //load all sfx audio clips.
+        billyClips = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
+        blazerClips = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
+
+
 
     }
 	
@@ -75,9 +80,23 @@ public class HandleMovement : MonoBehaviour {
                 {
                     //play jump animation.
                     anim.JumpAnim();
-                    //play randomized jump sfx.
-                    //GetComponent<AudioSource>().clip = myClips[Random.Range(0, myClips.Length)];
-                    Completed.SoundManager.instance.RandomizeSfx(myClips[6],myClips[7]);
+
+                    //play randomized jump sfx
+                    if (Character.name == "Billy")
+                    {
+                        //var man = new SoundManager("Billy");
+                       // audioSource.PlayOneShot(RandomClip());
+                        Completed.SoundManager.instance.RandomizeSfx(billyClips[6], billyClips[7]);
+                    }
+
+                    if (Character.name == "Blazer")
+                    {
+                        //audioSource.PlayOneShot(RandomClip());
+                        Completed.SoundManager.instance.RandomizeSfx(blazerClips[3]);
+                    }
+
+
+
                     //source.PlayOneShot(jump0);
                     //actually jump, maybe add jump force here.
                     rb.velocity = new Vector3(rb.velocity.x, this.jumpSpeed);
@@ -102,6 +121,12 @@ public class HandleMovement : MonoBehaviour {
         {
             justJumped = false;
         }
+    }
+
+    AudioClip RandomClip()
+    {
+        return billyClips[Random.Range(0, billyClips.Length)];
+        //return blazerClips[Random.Range(0, blazerClips.Length)];
     }
 
     public void AddVelocityOnCharacter(Vector3 direction, float timer)

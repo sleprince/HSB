@@ -24,7 +24,7 @@ namespace Completed
 				Destroy (gameObject);
 
 			//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-		//	DontDestroyOnLoad (gameObject);
+			DontDestroyOnLoad (gameObject);
 		}
 
 
@@ -50,12 +50,15 @@ namespace Completed
 
 			//Set the pitch of the audio source to the randomly chosen pitch.
 			efxSource.pitch = randomPitch;
+			//musicSource.pitch = randomPitch;
 
 			//Set the clip to the clip at our randomly chosen index.
 			efxSource.clip = clips[randomIndex];
+           // musicSource.clip = clips[randomIndex];
 
-			//Play the clip.
-			efxSource.Play();
+            //Play the clip, as one shot so multiple clips can play at once.
+			efxSource.PlayOneShot(efxSource.clip);
+
 		}
 	}
 }
