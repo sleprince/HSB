@@ -11,6 +11,7 @@ public class StateManager : MonoBehaviour {
     public bool attack1;
     public bool attack2;
     public bool attack3;
+
     public bool crouch;
 
     public bool canAttack;
@@ -20,7 +21,9 @@ public class StateManager : MonoBehaviour {
     public bool dontMove;
     public bool onGround;
     public bool lookRight;
-    private AudioSource source;
+
+    //audiosource to be able to play audio.
+    //public AudioSource source;
 
     public Slider healthSlider;
     SpriteRenderer sRenderer;
@@ -34,6 +37,11 @@ public class StateManager : MonoBehaviour {
 
     public GameObject[] movementColliders;
 
+    //audio clip arrays.
+    static public AudioClip[] Billy;
+    static public AudioClip[] Blazer;
+
+
     ParticleSystem blood;
 
     void Start()
@@ -43,7 +51,12 @@ public class StateManager : MonoBehaviour {
         handleMovement = GetComponent<HandleMovement>();
         sRenderer = GetComponentInChildren<SpriteRenderer>();
         blood = GetComponentInChildren<ParticleSystem>();
-        source = GetComponent<AudioSource>();
+        //source = GetComponent<AudioSource>();
+
+        //load all relevant sfx audio clips.
+        Billy = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
+        Blazer = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
+
     }
 
 	void FixedUpdate () {
@@ -64,6 +77,18 @@ public class StateManager : MonoBehaviour {
                 LevelManager.GetInstance().EndTurnFunction();
 
                 handleAnim.anim.Play("Dead");
+                //add victory sounds here
+
+                //play randomized victory sfx
+                if (handleMovement.Character.name == "{handleMovement.CharacterNames[0]}")
+                {
+                    Completed.SoundManager.instance.RandomizeSfx(Billy[5], Billy[6], Billy[7]);
+                }
+
+                if (handleMovement.Character.name == "{handleMovement.CharacterNames[1]}")
+                {
+                    Completed.SoundManager.instance.RandomizeSfx(Blazer[2], Blazer[3], Blazer[4]);
+                }
             }
         }
 	}
@@ -85,6 +110,7 @@ public class StateManager : MonoBehaviour {
         attack1 = false;
         attack2 = false;
         attack3 = false;
+        //need to add any new attacks here too.
         crouch = false;
         gettingHit = false;
         currentlyAttacking = false;
@@ -125,6 +151,8 @@ public class StateManager : MonoBehaviour {
 
             health -= damage;
             gettingHit = true;
+            //impact sounds here
+
         }
     }
 

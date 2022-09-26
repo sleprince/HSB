@@ -9,7 +9,7 @@ public class HandleMovement : MonoBehaviour {
     HandleAnimations anim;
 
     public float acceleration = 30;
-    public float airAcceleration = 15;
+    public float airAcceleration = 25;
     public float maxSpeed = 60;
     public float jumpSpeed = 5;
     public float jumpDuration = 5;
@@ -21,12 +21,20 @@ public class HandleMovement : MonoBehaviour {
     bool canVariableJump;
     float jmpTimer;
 
-    //audio clips array.
-    static public AudioClip[] billyClips;
-    static public AudioClip[] blazerClips;
+    //master array containing all the arrays of audioclips.
+    public AudioClipArray[] Sounds;
+    //potential bug, doesn't work if defining the size of the AudioClipArray here, have to do it in editor.
+    //public AudioClipArray[] Sounds = new AudioClipArray[2];
 
-    public AudioSource audioSource;
+    [HideInInspector]
+    public string[] CharacterNames = { "Billy", "Blazer", "Chubbernaught", "Headmaster", "Janitor", "Max" };
 
+
+    void Awake()
+    {
+        //if I need to do anything in loading.
+
+    }
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -34,11 +42,17 @@ public class HandleMovement : MonoBehaviour {
         anim = GetComponent<HandleAnimations>();
         rb.freezeRotation = true;
 
+        //does not work if you define the size of AudioClipArray here either, only in editor.
+        //Sounds = new AudioClipArray[2];
 
-        //load all sfx audio clips.
-        billyClips = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
-        blazerClips = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
+        //load all relevant sfx audio clips into the AudioClipArrays.
+        Sounds[0].clips = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates/Jump");
+        Sounds[1].clips = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer/Jump");
 
+        //make for loop for this
+
+        //experimenting using variables from other scripts, works.
+        // states.attack1 = true;
 
 
     }
@@ -82,22 +96,22 @@ public class HandleMovement : MonoBehaviour {
                     anim.JumpAnim();
 
                     //play randomized jump sfx
+                    //make for loop for this too
                     if (Character.name == "Billy")
                     {
-                        //var man = new SoundManager("Billy");
-                       // audioSource.PlayOneShot(RandomClip());
-                        Completed.SoundManager.instance.RandomizeSfx(billyClips[6], billyClips[7]);
+                        Completed.SoundManager.instance.RandomizeSfx(Sounds[0].clips[0], Sounds[0].clips[1]);
                     }
 
                     if (Character.name == "Blazer")
                     {
-                        //audioSource.PlayOneShot(RandomClip());
-                        Completed.SoundManager.instance.RandomizeSfx(blazerClips[3]);
+                        Completed.SoundManager.instance.RandomizeSfx(Sounds[1].clips[0], Sounds[1].clips[1]);
                     }
 
+                    if (Character.name == "Chubbernaught")
+                    {
+                        Completed.SoundManager.instance.RandomizeSfx(Sounds[1].clips[0], Sounds[1].clips[1]);
+                    }
 
-
-                    //source.PlayOneShot(jump0);
                     //actually jump, maybe add jump force here.
                     rb.velocity = new Vector3(rb.velocity.x, this.jumpSpeed);
                     jmpTimer = 0;
@@ -121,12 +135,6 @@ public class HandleMovement : MonoBehaviour {
         {
             justJumped = false;
         }
-    }
-
-    AudioClip RandomClip()
-    {
-        return billyClips[Random.Range(0, billyClips.Length)];
-        //return blazerClips[Random.Range(0, blazerClips.Length)];
     }
 
     public void AddVelocityOnCharacter(Vector3 direction, float timer)
