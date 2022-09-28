@@ -15,7 +15,7 @@ public class SelectScreenManager : MonoBehaviour
     public GameObject potraitCanvas; // the canvas that holds all the potraits
    
     bool loadLevel; //if we are loading the level  
-    public bool bothPlayersSelected;
+    public bool bothPlayersSelected; //whether both players chosen and the level will then be loaded.
 
 
     public static int CharacterName;
@@ -215,11 +215,9 @@ public class SelectScreenManager : MonoBehaviour
             if (pl.createdCharacter.name == "Fighter Object(Clone)")
             {
                 CharacterName = 1;
-                Debug.Log(CharacterName);
+                //Debug.Log(CharacterName);
             }
 
-
-            //Debug.Log(CharacterName);
 
             pl.playerBase.hasCharacter = true;
         }
@@ -253,7 +251,7 @@ public class SelectScreenManager : MonoBehaviour
         }
         else
         {
-            //here is where I should change it, to loading level select scrren for 2Player mode.
+            //here is where I should change it, to loading level select screen for 2Player mode.
             MySceneManager.GetInstance().RequestLevelLoad(SceneType.prog, "level_1");
         }
 
@@ -290,13 +288,23 @@ public class SelectScreenManager : MonoBehaviour
                 Destroy(pl.createdCharacter);
             }
 
+
+            //defining the half scale.
+            var HalfScale = new Vector3(.25f, .25f, .25f);
+
             //and create another one
             GameObject go = Instantiate(
                 CharacterManager.GetInstance().returnCharacterWithID(pl.activePotrait.characterId).prefab,
+                //where you could maybe change the scale
                 pl.charVisPos.position,
                 Quaternion.identity) as GameObject;
 
+
+
             pl.createdCharacter = go;
+            //putting character back in the place where it's meant to spawn
+            go.transform.position = pl.charVisPos.position;
+            go.transform.localScale = HalfScale;
 
             pl.previewPotrait = pl.activePotrait;
 
@@ -339,6 +347,7 @@ public class SelectScreenManager : MonoBehaviour
         public float timerToReset;
 
         public PlayerBase playerBase;
+
 
     }
 

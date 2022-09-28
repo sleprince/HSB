@@ -38,8 +38,8 @@ public class StateManager : MonoBehaviour {
     public GameObject[] movementColliders;
 
     //audio clip arrays.
-    static public AudioClip[] Billy;
-    static public AudioClip[] Blazer;
+    public AudioClip[] Billy;
+    public AudioClip[] Blazer;
 
 
     ParticleSystem blood;
@@ -79,16 +79,17 @@ public class StateManager : MonoBehaviour {
                 handleAnim.anim.Play("Dead");
                 //add victory sounds here
 
-                //play randomized victory sfx
-                if (handleMovement.Character.name == "{handleMovement.CharacterNames[0]}")
+                //play randomized victory sfx, if person who died is not Billy.
+                Debug.Log(handleMovement.Character.name);
+                if (handleMovement.Character.name != "{handleMovement.CharacterNames[0]}")
                 {
-                    Completed.SoundManager.instance.RandomizeSfx(Billy[5], Billy[6], Billy[7]);
+                    Completed.SoundManager.instance.RandomizeSfx(Billy[12], Billy[13], Billy[14]);
                 }
 
-                if (handleMovement.Character.name == "{handleMovement.CharacterNames[1]}")
-                {
-                    Completed.SoundManager.instance.RandomizeSfx(Blazer[2], Blazer[3], Blazer[4]);
-                }
+               // if (handleMovement.Character.name == "{handleMovement.CharacterNames[1]}")
+                //{
+                   // Completed.SoundManager.instance.RandomizeSfx(Blazer[2], Blazer[3], Blazer[4]);
+                //}
             }
         }
 	}
