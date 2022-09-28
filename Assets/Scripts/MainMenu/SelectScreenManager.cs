@@ -92,6 +92,9 @@ public class SelectScreenManager : MonoBehaviour
         {
             for (int i = 0; i < plInterfaces.Count; i++)
             {
+                //bringing characterbase info into each player interface as a new characterbase.
+               // plInterfaces[i].characterBase = charManager.characterList[i];
+
                 if (i < numberOfPlayers)
                 {
                     if (Input.GetButtonUp("B" + charManager.players[i].inputId))
@@ -101,7 +104,12 @@ public class SelectScreenManager : MonoBehaviour
 
                     if (!charManager.players[i].hasCharacter)
                     {
+                        //bringing playerbase info into each player interface as a new playerbase.
                         plInterfaces[i].playerBase = charManager.players[i];
+
+                        
+                        //plInterfaces[i].characterBase.CharNum = null;
+                        //plInterfaces[i].CharNum = null;
 
                         HandleSelectorPosition(plInterfaces[i]);
                         HandleSelectScreenInput(plInterfaces[i], charManager.players[i].inputId);
@@ -111,6 +119,9 @@ public class SelectScreenManager : MonoBehaviour
                 else
                 {
                     charManager.players[i].hasCharacter = true;
+                    //trying to play chosen character sound.
+                    //plInterfaces[i].SelectSound.play();
+                    //charManager.characterList.SelectSound.play();
                 }
             }
            
@@ -207,9 +218,17 @@ public class SelectScreenManager : MonoBehaviour
             //make a reaction on the character, because why not
             pl.createdCharacter.GetComponentInChildren<Animator>().Play("Kick");
 
+            //play the relevant select sound
+            Completed.SoundManager.instance.RandomizeSfx(pl.SelectSound);
+
+
             //pass the character to the character manager so that we know what prefab to create in the level
             pl.playerBase.playerPrefab =
                charManager.returnCharacterWithID(pl.activePotrait.characterId).prefab;
+
+            //pass the character name to the character manager so that we can use it in the level.
+            pl.playerBase.CharName =
+                charManager.returnCharacterWithID(pl.activePotrait.characterId).CharName;
 
             //trying to make global character identification.
             if (pl.createdCharacter.name == "Fighter Object(Clone)")
@@ -267,6 +286,9 @@ public class SelectScreenManager : MonoBehaviour
         {
             pl.activePotrait = pi; //find the active potrait
 
+            //bringing the select sound for which character is being hovered over to the player interface.
+            pl.SelectSound = CharacterManager.GetInstance().returnCharacterWithID(pi.characterId).SelectSound;
+
             //and place the selector over it's position
             Vector2 selectorPosition = pl.activePotrait.transform.localPosition;
 
@@ -294,10 +316,16 @@ public class SelectScreenManager : MonoBehaviour
 
             //and create another one
             GameObject go = Instantiate(
+                //character gets made with this function
                 CharacterManager.GetInstance().returnCharacterWithID(pl.activePotrait.characterId).prefab,
                 //where you could maybe change the scale
                 pl.charVisPos.position,
                 Quaternion.identity) as GameObject;
+
+            //bringing the character ID number over from the Character list
+            pl.CharNum = pl.activePotrait.characterId;
+            //pl.CharName is the property we want to bring in to the level to show their name under the health bar.
+            pl.CharName = CharacterManager.GetInstance().returnCharacterWithID(pl.activePotrait.characterId).CharName;
 
 
 
@@ -339,6 +367,10 @@ public class SelectScreenManager : MonoBehaviour
         public Transform charVisPos; //the visualization position for player 1
         public GameObject createdCharacter; // the created character for player 1
 
+        public AudioClip SelectSound; //select sound for the chosen character
+        public string CharNum; //character id number for the chosen character
+        public string CharName; //character name for the chosen character
+
         public int activeX;//the active X and Y entries for player 1
         public int activeY;
 
@@ -347,6 +379,8 @@ public class SelectScreenManager : MonoBehaviour
         public float timerToReset;
 
         public PlayerBase playerBase;
+        //bringing characterbase info into each player interface as a new characterbase.
+        public CharacterBase characterBase;
 
 
     }

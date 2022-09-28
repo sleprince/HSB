@@ -98,6 +98,9 @@ public class CharacterBase
     public string charId;
     public GameObject prefab;
     public Sprite icon;
+
+    public string CharName;
+    public AudioClip SelectSound;
 }
 
 [System.Serializable]
@@ -110,6 +113,11 @@ public class PlayerBase
     public GameObject playerPrefab;
     public StateManager playerStates;
     public int score;
+
+    //for use with passing over selected CharName to the level
+    public string CharName;
+    //for use with passing over selected character's sounds to the level
+    //public AudioClipArray[] CharSounds;
 
     public enum PlayerType
     {
