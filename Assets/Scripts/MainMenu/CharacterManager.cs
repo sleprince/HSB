@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,7 +14,7 @@ public class CharacterManager : MonoBehaviour {
     public List<CharacterBase> characterList = new List<CharacterBase>();
 
     //we use this function to find characters from their id
-	public CharacterBase returnCharacterWithID(string id)
+	public CharacterBase returnCharacterWithID(Text id)
     {
         CharacterBase retVal = null;
 
@@ -95,14 +96,14 @@ public class CharacterManager : MonoBehaviour {
 [System.Serializable]
 public class CharacterBase
 {
-    public string charId;
+    public Text charId;
     public GameObject prefab;
     public Sprite icon;
 
-    public string CharName;
+    public Text CharName;
     public AudioClip SelectSound;
 
-    public AudioClip[] CharSounds;
+    public AudioClipArray[] CharSounds;
 
 }
 
@@ -118,9 +119,9 @@ public class PlayerBase
     public int score;
 
     //for use with passing over selected CharName to the level
-    public string CharName;
+    public Text CharName;
     //for use with passing over selected character's sounds to the level
-    //public AudioClipArray[] CharSounds;
+    public AudioClipArray[] CharSounds;
 
     public enum PlayerType
     {

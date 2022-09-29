@@ -230,6 +230,11 @@ public class SelectScreenManager : MonoBehaviour
             pl.playerBase.CharName =
                 charManager.returnCharacterWithID(pl.activePotrait.characterId).CharName;
 
+            //pass the character sounds to the character manager so that we can use them in the level.
+            pl.playerBase.CharSounds =
+    charManager.returnCharacterWithID(pl.activePotrait.characterId).CharSounds;
+
+
             //trying to make global character identification.
             if (pl.createdCharacter.name == "Fighter Object(Clone)")
             {
@@ -362,14 +367,16 @@ public class SelectScreenManager : MonoBehaviour
     public class PlayerInterfaces
     {
         public PotraitInfo activePotrait; //the current active potrait for player 1
-        public PotraitInfo previewPotrait; 
+        public PotraitInfo previewPotrait;
         public GameObject selector; //the select indicator for player1
         public Transform charVisPos; //the visualization position for player 1
         public GameObject createdCharacter; // the created character for player 1
 
         public AudioClip SelectSound; //select sound for the chosen character
-        public string CharNum; //character id number for the chosen character
-        public string CharName; //character name for the chosen character
+        public Text CharNum; //character id number for the chosen character
+        public Text CharName; //character name for the chosen character
+        public AudioClipArray[] CharSounds; //character sounds for the chosen character
+
 
         public int activeX;//the active X and Y entries for player 1
         public int activeY;

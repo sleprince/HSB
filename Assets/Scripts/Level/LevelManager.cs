@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour {
         //get the references from the singletons
         charM = CharacterManager.GetInstance();
         levelUI = LevelUI.GetInstance();
+        //taken out because I want a static camera in my game.
         //camM = CameraManager.GetInstance();
 
         //init the WaitForSeconds
@@ -128,6 +129,11 @@ public class LevelManager : MonoBehaviour {
 
             charM.players[i].playerStates.healthSlider = levelUI.healthSliders[i];
 
+            //add chosen character names under health sliders.
+            levelUI.pText[i].text = charM.players[i].CharName.text;
+
+
+            //took out camera that folllows player movement.
             //camM.players.Add(go.transform);
         }
 

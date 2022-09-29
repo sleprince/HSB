@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -149,7 +150,7 @@ public enum SceneType
 [System.Serializable]
 public class SoloProgression
 {
-    public string charId;
+    public Text charId;
     public string levelID;
 }
 

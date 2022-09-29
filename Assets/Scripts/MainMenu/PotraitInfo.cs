@@ -6,6 +6,6 @@ public class PotraitInfo : MonoBehaviour {
 
     public int posX;
     public int posY;
-    public string characterId;
+    public Text characterId;
     public Image img;
 }
