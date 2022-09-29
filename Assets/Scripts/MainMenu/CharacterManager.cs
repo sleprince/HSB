@@ -120,6 +120,7 @@ public class PlayerBase
 
     //for use with passing over selected CharName to the level
     public Text CharName;
+    public Text CharNum;
     //for use with passing over selected character's sounds to the level
     public AudioClipArray[] CharSounds;
 

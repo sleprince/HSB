@@ -261,6 +261,21 @@ public class SelectScreenManager : MonoBehaviour
                     charManager.players[i].playerPrefab = 
                         charManager.returnCharacterWithID(potraitList[ranValue].characterId).prefab;
 
+                    //pl.CharName is the property we want to bring in to the level to show their name under the health bar.
+                    charManager.players[i].CharName = 
+            CharacterManager.GetInstance().returnCharacterWithID(potraitList[ranValue].characterId).CharName;
+                    //have to bring everything for the ai character too
+
+                    //pass the character sounds to the character manager so that we can use them in the level.
+                    charManager.players[i].CharSounds =
+            charManager.returnCharacterWithID(potraitList[ranValue].characterId).CharSounds;
+
+                    //bringing the character ID number over from the Character list
+                    charManager.players[i].CharNum = potraitList[ranValue].characterId;
+
+
+
+
                     Debug.Log(potraitList[ranValue].characterId);
                 }
             }
