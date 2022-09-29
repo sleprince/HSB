@@ -101,6 +101,9 @@ public class CharacterBase
 
     public string CharName;
     public AudioClip SelectSound;
+
+    public AudioClip[] CharSounds;
+
 }
 
 [System.Serializable]
