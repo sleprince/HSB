@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour {
     WaitForSeconds oneSec;//we will be using this a lot so we don't want to create a new one everytime, saves a few bytes this way
     public Transform[] spawnPositions;// the positions characters will spawn on
 
-
+    //taken out because no longer using scripted camera.
     //CameraManager camM;
     CharacterManager charM;
     LevelUI levelUI;//we store ui elements here for ease of access
@@ -123,6 +123,7 @@ public class LevelManager : MonoBehaviour {
             GameObject go = Instantiate(charM.players[i].playerPrefab
             , spawnPositions[i].position, Quaternion.identity)
             as GameObject;
+            go.name = "player" + i;
 
             //and assign the needed references
             charM.players[i].playerStates = go.GetComponent<StateManager>();
@@ -147,7 +148,6 @@ public class LevelManager : MonoBehaviour {
         {
             charM.players[i].playerStates.health = 100;
             charM.players[i].playerStates.handleAnim.anim.Play("Locomotion");
-            //charM.players[i].playerStates.transform.GetComponent<Animator>().Play("Locomotion");
             charM.players[i].playerStates.transform.position = spawnPositions[i].position;
         }
 
@@ -264,10 +264,14 @@ public class LevelManager : MonoBehaviour {
         yield return oneSec;
         yield return oneSec;
 
-        //find who was the player that won
+        //bool name = false;
+
+        //find who was the player that won. Need to use vplayer for writing who won and playing victory sound.
         PlayerBase vPlayer = FindWinningPlayer();
 
-        if(vPlayer == null) //if our function returned a null
+
+
+        if (vPlayer == null) //if our function returned a null
         {
             //that means it's a draw
             levelUI.AnnouncerTextLine1.text = "Draw";
@@ -275,8 +279,10 @@ public class LevelManager : MonoBehaviour {
         }
         else
         {
-            //else that player is the winner
-            levelUI.AnnouncerTextLine1.text = vPlayer.playerId + " Wins!";
+            //else that player is the winner, change ot include character name
+            levelUI.AnnouncerTextLine1.text = vPlayer.CharName.text + " Wins!";
+            //play victory sound here
+            //vPlayer.CharSounds
             levelUI.AnnouncerTextLine1.color = Color.red;
         }
 
@@ -313,6 +319,7 @@ public class LevelManager : MonoBehaviour {
         {
             for (int i = 0; i < charM.players.Count; i++)
             {
+                //score is the little red circles that appear under healthbar.
                 charM.players[i].score = 0;
                 charM.players[i].hasCharacter = false;
             }
@@ -347,6 +354,7 @@ public class LevelManager : MonoBehaviour {
         return retVal;
     }
 
+
     PlayerBase FindWinningPlayer()
     {
         //to find who won the turn
@@ -354,8 +362,9 @@ public class LevelManager : MonoBehaviour {
 
         StateManager targetPlayer = null;
 
+
         //check first to see if both players have equal health
-        if(charM.players[0].playerStates.health != charM.players[1].playerStates.health)
+        if (charM.players[0].playerStates.health != charM.players[1].playerStates.health)
         {
             //if not, then check who has the lower health, the other one is the winner
             if(charM.players[0].playerStates.health < charM.players[1].playerStates.health)
@@ -371,7 +380,7 @@ public class LevelManager : MonoBehaviour {
                 levelUI.AddWinIndicator(0);
             }
 
-            retVal = charM.returnPlayerFromStates(targetPlayer); 
+            retVal = charM.returnPlayerFromStates(targetPlayer);
         }
 
         return retVal;

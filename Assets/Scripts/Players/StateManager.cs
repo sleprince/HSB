@@ -22,6 +22,8 @@ public class StateManager : MonoBehaviour {
     public bool onGround;
     public bool lookRight;
 
+    public bool JustBeenHit;
+
     //audiosource to be able to play audio.
     //public AudioSource source;
 
@@ -37,9 +39,11 @@ public class StateManager : MonoBehaviour {
 
     public GameObject[] movementColliders;
 
-    //audio clip arrays.
-    public AudioClip[] Billy;
-    public AudioClip[] Blazer;
+    //audio clip arrays. depricated
+    // public AudioClip[] Billy;
+    // public AudioClip[] Blazer;
+
+    public AudioClip[] CharSounds;
 
 
     ParticleSystem blood;
@@ -53,9 +57,9 @@ public class StateManager : MonoBehaviour {
         blood = GetComponentInChildren<ParticleSystem>();
         //source = GetComponent<AudioSource>();
 
-        //load all relevant sfx audio clips.
-        Billy = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
-        Blazer = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
+        //load all relevant sfx audio clips. depricated
+        //Billy = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
+        //Blazer = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
 
     }
 
@@ -80,11 +84,11 @@ public class StateManager : MonoBehaviour {
                 //add victory sounds here
 
                 //play randomized victory sfx, if person who died is not Billy.
-                Debug.Log(handleMovement.Character.name);
-                if (handleMovement.Character.name != "{handleMovement.CharacterNames[0]}")
-                {
-                    Completed.SoundManager.instance.RandomizeSfx(Billy[12], Billy[13], Billy[14]);
-                }
+               // Debug.Log(handleMovement.Character.name);
+               // if (handleMovement.Character.name != "{handleMovement.CharacterNames[0]}")
+               // {
+               //     Completed.SoundManager.instance.RandomizeSfx(Billy[12], Billy[13], Billy[14]);
+               // }
 
                // if (handleMovement.Character.name == "{handleMovement.CharacterNames[1]}")
                 //{
@@ -116,6 +120,9 @@ public class StateManager : MonoBehaviour {
         gettingHit = false;
         currentlyAttacking = false;
         dontMove = false;
+
+        JustBeenHit = false;
+
     }
 
     public void CloseMovementCollider(int index)
@@ -132,27 +139,65 @@ public class StateManager : MonoBehaviour {
     {
         if (!gettingHit)
         {
-            switch (damageType)
-            {
-                case HandleDamageColliders.DamageType.light:
-                    StartCoroutine(CloseImmortality(0.3f));
+
+
+
+                switch (damageType)
+                {
+
+                    case HandleDamageColliders.DamageType.light:
+                        StartCoroutine(CloseImmortality(0.3f));
+
+                    if (!JustBeenHit)
+                    {
+                        // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeMusicOnce(CharSounds[1], CharSounds[2]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[1], CharSounds[2]); }
+                        JustBeenHit = true;
+
+
+                    }
+
                     break;
+
                 case HandleDamageColliders.DamageType.heavy:
-                    handleMovement.AddVelocityOnCharacter(
-                        ((!lookRight) ? Vector3.right * 1 : Vector3.right * -1) + Vector3.up
-                        , 0.5f
-                        );
+                        handleMovement.AddVelocityOnCharacter(
+                            ((!lookRight) ? Vector3.right * 1 : Vector3.right * -1) + Vector3.up
+                            , 0.5f
+                            );
+                        StartCoroutine(CloseImmortality(1));
 
-                    StartCoroutine(CloseImmortality(1));
-                    break;
-            }
+                    if (!JustBeenHit)
+                    {
 
-            if(blood != null)
-                blood.Emit(30);
+                        // heavy impact sounds here
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeMusicOnce(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                        JustBeenHit = true;
 
-            health -= damage;
-            gettingHit = true;
-            //impact sounds here
+
+                    }
+
+                        break;
+                }
+
+                if (blood != null)
+                    //make this and if blood toggle option is on.
+                    blood.Emit(30);
+
+                health -= damage;
+                gettingHit = true;
+                JustBeenHit = true;
+
+                //3 second pause before more sounds
+                StartCoroutine(CacophanyStopper(3));
+                
+                //3 seconds of sounds allowed, might be wrong way around lol, as long as it works, doesn't have to debug on other pc.
+                StartCoroutine(CacophanyStopper(3));
 
         }
     }
@@ -161,5 +206,17 @@ public class StateManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(timer);
         gettingHit = false;
+    }
+
+    IEnumerator CacophanyStopper(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        JustBeenHit = false;
+    }
+
+    IEnumerator AllowSound(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        JustBeenHit = true;
     }
 }

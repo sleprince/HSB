@@ -103,7 +103,7 @@ public class CharacterBase
     public Text CharName;
     public AudioClip SelectSound;
 
-    public AudioClipArray[] CharSounds;
+    public AudioClip[] CharSounds;
 
 }
 
@@ -122,7 +122,7 @@ public class PlayerBase
     public Text CharName;
     public Text CharNum;
     //for use with passing over selected character's sounds to the level
-    public AudioClipArray[] CharSounds;
+    public AudioClip[] CharSounds;
 
     public enum PlayerType
     {

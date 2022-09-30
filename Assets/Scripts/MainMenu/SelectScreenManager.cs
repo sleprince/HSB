@@ -390,7 +390,7 @@ public class SelectScreenManager : MonoBehaviour
         public AudioClip SelectSound; //select sound for the chosen character
         public Text CharNum; //character id number for the chosen character
         public Text CharName; //character name for the chosen character
-        public AudioClipArray[] CharSounds; //character sounds for the chosen character
+        public AudioClip[] CharSounds; //character sounds for the chosen character
 
 
         public int activeX;//the active X and Y entries for player 1
