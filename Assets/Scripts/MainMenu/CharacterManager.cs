@@ -124,6 +124,9 @@ public class PlayerBase
     //for use with passing over selected character's sounds to the level
     public AudioClip[] CharSounds;
 
+
+    public AudioClip[] HitSounds;
+
     public enum PlayerType
     {
         user, //it's a real human

@@ -210,12 +210,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      white atlas_21: 781022890
+      white atlas_15: -1606669689
       white atlas_12: -929832858
       Standing Block_3: 0
       white atlas_2: -639317213
       white atlas_9: -1206200251
-      white atlas_3: 1973841355
+      white atlas_7: 1126846878
       Standing Block_0: 0
       white atlas_14: 1437506126
       white atlas_8: -1415398894
@@ -234,11 +234,11 @@ TextureImporter:
       white atlas_18: 1720459674
       white atlas_19: 453552956
       white atlas_24: -922638825
+      white atlas_21: 781022890
       Standing Block_2: 0
-      white atlas_1: -786086975
       white atlas_20: 685239423
-      white atlas_7: 1126846878
-      white atlas_15: -1606669689
+      white atlas_1: -786086975
+      white atlas_3: 1973841355
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
