@@ -157,6 +157,9 @@ public class StateManager : MonoBehaviour {
                         { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[1], CharSounds[2]); }
                         JustBeenHit = true;
 
+                        //3 second pause before more sounds
+                        StartCoroutine(CacophanyStopper(3));
+
 
                     }
 
@@ -179,6 +182,9 @@ public class StateManager : MonoBehaviour {
                         { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[3], CharSounds[4], CharSounds[5]); }
                         JustBeenHit = true;
 
+                        //3 second pause before more sounds
+                        StartCoroutine(CacophanyStopper(3));
+
 
                     }
 
@@ -193,11 +199,10 @@ public class StateManager : MonoBehaviour {
                 gettingHit = true;
                 JustBeenHit = true;
 
-                //3 second pause before more sounds
-                StartCoroutine(CacophanyStopper(3));
+
                 
                 //3 seconds of sounds allowed, might be wrong way around lol, as long as it works, doesn't have to debug on other pc.
-                StartCoroutine(CacophanyStopper(3));
+                //StartCoroutine(AllowSound(3));
 
         }
     }
