@@ -41,9 +41,23 @@ namespace Completed
 			efxSource.Play();
 		}
 
+        //Random but not pitched.
+        public void RandomOnly(AudioClip[] clips)
+        {
+            //Generate a random number between 0 and the length of our array of clips passed in.
+            int randomIndex = Random.Range(0, clips.Length);
 
-		//RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
-		public void RandomizeSfxOnce(params AudioClip[] clips)
+            //Set the clip to the clip at our randomly chosen index.
+            efxSource.clip = clips[randomIndex];
+            // musicSource.clip = clips[randomIndex];
+
+            //Play the clip, as one shot so multiple clips can play at once.
+            efxSource.PlayOneShot(efxSource.clip);
+        }
+
+
+        //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
+        public void RandomizeSfxOnce(params AudioClip[] clips)
 		{
             //Generate a random number between 0 and the length of our array of clips passed in.
             int randomIndex = Random.Range(0, clips.Length);

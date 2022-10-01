@@ -46,6 +46,9 @@ public class StateManager : MonoBehaviour {
     public AudioClip[] CharSounds;
 
 
+    CharacterManager charManager;
+
+
     ParticleSystem blood;
 
     void Start()
@@ -60,6 +63,16 @@ public class StateManager : MonoBehaviour {
         //load all relevant sfx audio clips. depricated
         //Billy = Resources.LoadAll<AudioClip>("Audio/Sounds/BillyNoMates");
         //Blazer = Resources.LoadAll<AudioClip>("Audio/Sounds/Blazer");
+
+        charManager = CharacterManager.GetInstance();
+
+        var AllHits = "charManager.players[0].HitSounds[0]" ;
+
+        for (int i = 1; i < 16; i++) 
+        {
+            AllHits = AllHits + "," + "charManager.players[0].HitSounds";
+        }
+        Debug.Log(AllHits);
 
     }
 
@@ -148,13 +161,16 @@ public class StateManager : MonoBehaviour {
                     case HandleDamageColliders.DamageType.light:
                         StartCoroutine(CloseImmortality(0.3f));
 
+                    //play genric hit sound
+                    Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
+
                     if (!JustBeenHit)
                     {
                         // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                        { Completed.SoundManager.instance.RandomizeMusicOnce(CharSounds[1], CharSounds[2]); }
+                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
                         if (this.name == "player1")
-                        { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[1], CharSounds[2]); }
+                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
                         JustBeenHit = true;
 
                         //3 second pause before more sounds
@@ -172,14 +188,18 @@ public class StateManager : MonoBehaviour {
                             );
                         StartCoroutine(CloseImmortality(1));
 
+                    
+                        //play genric hit sound
+                        Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
+
                     if (!JustBeenHit)
                     {
 
                         // heavy impact sounds here
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                        { Completed.SoundManager.instance.RandomizeMusicOnce(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
                         if (this.name == "player1")
-                        { Completed.SoundManager.instance.RandomizeSfxOnce(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
                         JustBeenHit = true;
 
                         //3 second pause before more sounds
