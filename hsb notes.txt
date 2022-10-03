@@ -1,0 +1,11 @@
+y is actually lb
+
+change to d pad instead of stick
+menu dont work in intro
+
+use loadscene in myscenemanager to switch levels
+
+if (!states.attack4) for autofire mode
+
+OMG AFTER ALL THAT I JYST HAD THE TRANSTION ARROWS SET UP WRONG IN NEW ATTACKS ON ANIMATOR
+& HAD TO KNOW HOW TO COPY PASTE TRANSITIONS
