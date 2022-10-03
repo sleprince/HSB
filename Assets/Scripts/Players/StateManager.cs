@@ -11,6 +11,7 @@ public class StateManager : MonoBehaviour {
     public bool attack1;
     public bool attack2;
     public bool attack3;
+    public bool attack4;
 
     public bool crouch;
 
@@ -66,11 +67,12 @@ public class StateManager : MonoBehaviour {
 
         charManager = CharacterManager.GetInstance();
 
-        var AllHits = "charManager.players[0].HitSounds[0]" ;
+        //doesn't do anything useful.
+        var AllHits = "charManager.players[0].HitSounds[0]";
 
         for (int i = 1; i < 16; i++) 
         {
-            AllHits = AllHits + "," + "charManager.players[0].HitSounds";
+            AllHits = AllHits + "," + "charManager.players[0].HitSounds[" + i + "]";
         }
         Debug.Log(AllHits);
 
@@ -91,6 +93,8 @@ public class StateManager : MonoBehaviour {
         {
             if (LevelManager.GetInstance().countdown)
             {
+                //stop playing impact sounds
+
                 LevelManager.GetInstance().EndTurnFunction();
 
                 handleAnim.anim.Play("Dead");
@@ -128,6 +132,7 @@ public class StateManager : MonoBehaviour {
         attack1 = false;
         attack2 = false;
         attack3 = false;
+        attack4 = false;
         //need to add any new attacks here too.
         crouch = false;
         gettingHit = false;
@@ -243,5 +248,10 @@ public class StateManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(timer);
         JustBeenHit = true;
+    }
+
+    IEnumerator TimeHater(float timer)
+    {
+        yield return new WaitForSeconds(timer);
     }
 }
