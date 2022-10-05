@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+//using MyInput;
+
 public class IntroSceneManager : MonoBehaviour {
 
     public GameObject startText;
@@ -14,9 +16,12 @@ public class IntroSceneManager : MonoBehaviour {
     public GameObject menuObj;
     public ButtonRef[] menuOptions;
 
+    //public MyInput inputH;
+
     void Start()
     {
         menuObj.SetActive(false);
+        //inputH = GetComponent<InputManager>();
     }
 
 	void Update () {
@@ -32,7 +37,7 @@ public class IntroSceneManager : MonoBehaviour {
             }
 
             //Where Start == space :P
-            if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Jump"))
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit"))
             {
                 init = true;
                 startText.SetActive(false);
@@ -43,41 +48,47 @@ public class IntroSceneManager : MonoBehaviour {
         {
             if(!loadingLevel) //if not already loading the level
             {
-                //indicate the selected option
-                menuOptions[activeElement].selected = true;
+                    //indicate the selected option
+                    if (Input.GetAxis("Vertical") == 0)
+                    { menuOptions[activeElement].selected = true; }
 
-                //change the selected option based on input
-                if(Input.GetKeyUp(KeyCode.UpArrow))
+                if (menuOptions[activeElement].selected == true)
                 {
-                    menuOptions[activeElement].selected = false;
 
-                    if(activeElement > 0)
+                    //change the selected option based on input
+                    if (Input.GetAxis("Vertical") > 0)
                     {
+                        menuOptions[activeElement].selected = false;
 
-                        activeElement--;
-                    }
-                    else
-                    {
-                        activeElement = menuOptions.Length - 1;
-                    }
-                }
+                        if (activeElement > 0)
+                        {
 
-                if (Input.GetKeyUp(KeyCode.DownArrow))
-                {
-                    menuOptions[activeElement].selected = false;
+                            activeElement--;
+                        }
+                        else
+                        {
+                            activeElement = menuOptions.Length - 1;
+                        }
+                    }
 
-                    if (activeElement < menuOptions.Length - 1)
+                    if (Input.GetAxis("Vertical") < 0)
                     {
-                        activeElement++;
+                        menuOptions[activeElement].selected = false;
+
+                        if (activeElement < menuOptions.Length - 1)
+                        {
+                            activeElement++;
+                        }
+                        else
+                        {
+                            activeElement = 0;
+                        }
                     }
-                    else
-                    {
-                        activeElement = 0;
-                    }
+
                 }
 
                 //and if we hit space again
-                if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Jump"))
+                if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit"))
                 {
                     //then load the level
                     Debug.Log("load");

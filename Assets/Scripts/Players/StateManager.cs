@@ -12,6 +12,9 @@ public class StateManager : MonoBehaviour {
     public bool attack2;
     public bool attack3;
     public bool attack4;
+    public bool attack5;    
+
+    public bool IsBlocking;    
 
     public bool crouch;
 
@@ -24,6 +27,7 @@ public class StateManager : MonoBehaviour {
     public bool lookRight;
 
     public bool JustBeenHit;
+    public bool IsHeavy;
 
     //audiosource to be able to play audio.
     //public AudioSource source;
@@ -133,6 +137,10 @@ public class StateManager : MonoBehaviour {
         attack2 = false;
         attack3 = false;
         attack4 = false;
+
+        //block
+        attack5 = false;
+
         //need to add any new attacks here too.
         crouch = false;
         gettingHit = false;
@@ -166,23 +174,31 @@ public class StateManager : MonoBehaviour {
                     case HandleDamageColliders.DamageType.light:
                         StartCoroutine(CloseImmortality(0.3f));
 
-                    //play genric hit sound
-                    Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
-
-                    if (!JustBeenHit)
+                    if (!attack5)
                     {
-                        // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
-                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
-                        if (this.name == "player1")
-                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
-                        JustBeenHit = true;
+                        //play genric hit sound
+                        Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
 
-                        //3 second pause before more sounds
-                        StartCoroutine(CacophanyStopper(3));
+                        if (!JustBeenHit)
+                        {
+                            // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
+                            if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
+                            if (this.name == "player1")
+                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
+                            JustBeenHit = true;
+
+                            //3 second pause before more sounds
+                            StartCoroutine(CacophanyStopper(3));
+
+
+                        }
+
 
 
                     }
+
+
 
                     break;
 
@@ -193,41 +209,83 @@ public class StateManager : MonoBehaviour {
                             );
                         StartCoroutine(CloseImmortality(1));
 
-                    
-                        //play genric hit sound
+                    if (!attack5)
+                    { //play genric hit sound
                         Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
 
-                    if (!JustBeenHit)
-                    {
+                        IsHeavy = true;
 
-                        // heavy impact sounds here
-                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
-                        if (this.name == "player1")
-                        { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
-                        JustBeenHit = true;
+                        if (!JustBeenHit)
+                        {
 
-                        //3 second pause before more sounds
-                        StartCoroutine(CacophanyStopper(3));
+                            // heavy impact sounds here
+                            if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                            if (this.name == "player1")
+                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                            JustBeenHit = true;
+
+                            //3 second pause before more sounds
+                            StartCoroutine(CacophanyStopper(3));
+
+
+                        }
 
 
                     }
 
+
+
                         break;
+
+                //case HandleDamageColliders.DamageType.block:
+
+                   // IsBlocking = true;
+
+                   // break;
+            }
+
+                if (attack5)
+                {
+                    IsBlocking = true;
+                    dontMove = true;
+                    //blood = null;
+                }
+
+
+
+                if (IsBlocking)
+                {
+                damage = damage / 2;
+                blood.Emit(0);
                 }
 
                 if (blood != null)
-                    //make this and if blood toggle option is on.
-                    blood.Emit(30);
+
+                {
+                    if (!IsBlocking)//make this and if blood toggle option is on.
+                    { blood.Emit(30); }
+                }
+
+                if (IsHeavy)
+                { damage = damage * 2; }
+
 
                 health -= damage;
+
                 gettingHit = true;
+
                 JustBeenHit = true;
+                IsHeavy = false;
+                IsBlocking = false;
+                attack5 = false;
+
+                dontMove = false;
 
 
-                
-                //3 seconds of sounds allowed, might be wrong way around lol, as long as it works, doesn't have to debug on other pc.
-                //StartCoroutine(AllowSound(3));
+
+            //3 seconds of sounds allowed, might be wrong way around lol, as long as it works, doesn't have to debug on other pc.
+            //StartCoroutine(AllowSound(3));
 
         }
     }

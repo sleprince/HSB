@@ -8,7 +8,7 @@ public class HandleAnimations : MonoBehaviour
     StateManager states;
 
    // public float attackRate = .3f;
-    public AttacksBase[] attacks = new AttacksBase[3];
+    public AttacksBase[] attacks = new AttacksBase[5];
 
     void Start()
     {
@@ -67,17 +67,25 @@ public class HandleAnimations : MonoBehaviour
                 anim.SetBool("Attack4", attacks[3].attack);
             }
 
+            if (states.attack5)
+            {
+                attacks[4].attack = true;
+                anim.SetBool("Attack5", attacks[4].attack);
+            }
+
         }
 
         anim.SetBool("Attack1", attacks[0].attack);
         anim.SetBool("Attack2", attacks[1].attack);
         anim.SetBool("Attack3", attacks[2].attack);
         anim.SetBool("Attack4", attacks[3].attack);
+        anim.SetBool("Attack5", attacks[4].attack);
 
         attacks[0].attack = false;
         attacks[1].attack = false;
         attacks[2].attack = false;
         attacks[3].attack = false;
+        attacks[4].attack = false;
     }
 
     public void JumpAnim()
@@ -86,6 +94,7 @@ public class HandleAnimations : MonoBehaviour
         anim.SetBool("Attack2", false);
         anim.SetBool("Attack3", false);
         anim.SetBool("Attack4", false);
+        anim.SetBool("Attack5", false);
         anim.SetBool("Jump", true);
         StartCoroutine(CloseBoolInAnim("Jump"));
     }

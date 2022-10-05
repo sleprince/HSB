@@ -11,7 +11,8 @@ public class HandleDamageColliders : MonoBehaviour {
     public enum DamageType
     {
         light,
-        heavy
+        heavy,
+        block
     }
 
     public enum DCtype

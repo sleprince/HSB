@@ -1,0 +1,10 @@
+where does it set what damagetype amount is for each
+if is blocking less damage for each
+
+need to do Blocking bool in animator.
+need to turn blood back on
+
+added blocking, made heavy attack do double damage.
+
+in full screen fight looks fine,
+but select screen needs stuff on right brought to middle.
