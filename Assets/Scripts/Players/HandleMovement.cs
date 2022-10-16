@@ -103,14 +103,16 @@ public class HandleMovement : MonoBehaviour {
 
                     //play randomized jump sfx depending on player and character.
 
-
-                    //Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[0], charM.players[1].CharSounds[1]);
+                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[6], charM.players[0].CharSounds[7]); }
+                    if (this.name == "player1")
+                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[6], charM.players[1].CharSounds[7]); }
 
                     //depricated
                     //if (Character.name == "Chubbernaught")
                     //{
                     //    Completed.SoundManager.instance.RandomizeSfx(JumpSounds[2].clips[0], JumpSounds[2].clips[1]);
-                   // }
+                    // }
 
                     //actually jump, maybe add jump force here.
                     rb.velocity = new Vector3(rb.velocity.x, this.jumpSpeed);

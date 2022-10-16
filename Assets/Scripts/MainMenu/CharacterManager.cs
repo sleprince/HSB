@@ -14,7 +14,7 @@ public class CharacterManager : MonoBehaviour {
     public List<CharacterBase> characterList = new List<CharacterBase>();
 
     //we use this function to find characters from their id
-	public CharacterBase returnCharacterWithID(Text id)
+	public CharacterBase returnCharacterWithID(int id)
     {
         CharacterBase retVal = null;
 
@@ -96,7 +96,7 @@ public class CharacterManager : MonoBehaviour {
 [System.Serializable]
 public class CharacterBase
 {
-    public Text charId;
+    public int charId;
     public GameObject prefab;
     public Sprite icon;
 
@@ -120,7 +120,7 @@ public class PlayerBase
 
     //for use with passing over selected CharName to the level
     public Text CharName;
-    public Text CharNum;
+    public int CharNum;
     //for use with passing over selected character's sounds to the level
     public AudioClip[] CharSounds;
 

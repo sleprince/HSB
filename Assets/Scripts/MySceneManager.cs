@@ -150,7 +150,7 @@ public enum SceneType
 [System.Serializable]
 public class SoloProgression
 {
-    public Text charId;
+    public int charId;
     public string levelID;
 }
 

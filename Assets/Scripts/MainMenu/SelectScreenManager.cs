@@ -351,7 +351,7 @@ public class SelectScreenManager : MonoBehaviour
 
             pl.createdCharacter = go;
             //putting character back in the place where it's meant to spawn
-            go.transform.position = pl.charVisPos.position;
+            //go.transform.position = pl.charVisPos.position;
             go.transform.localScale = HalfScale;
 
             pl.previewPotrait = pl.activePotrait;
@@ -388,7 +388,7 @@ public class SelectScreenManager : MonoBehaviour
         public GameObject createdCharacter; // the created character for player 1
 
         public AudioClip SelectSound; //select sound for the chosen character
-        public Text CharNum; //character id number for the chosen character
+        public int CharNum; //character id number for the chosen character
         public Text CharName; //character name for the chosen character
         public AudioClip[] CharSounds; //character sounds for the chosen character
 

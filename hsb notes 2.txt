@@ -8,3 +8,17 @@ added blocking, made heavy attack do double damage.
 
 in full screen fight looks fine,
 but select screen needs stuff on right brought to middle.
+
+animation override or whatever its called.
+
+just as a feature they have different style blocks lol
+so weird.
+
+how put image in git readme, prb have to put file on git first.
+now that i got it in 1080p view, fix the issues. make grid just the size it needs to be.
+
+p1 x -2.6 y 0.02844228 z -7.2
+
+p2 x -1.15
+
+room for random or extra characters at bottom

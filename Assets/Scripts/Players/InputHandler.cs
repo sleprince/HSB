@@ -12,6 +12,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
         float horizontal;
         float vertical;
+
+        bool block;
+
         bool[] attack = new bool[5];
 
         StateManager states;
@@ -50,12 +53,13 @@ using UnityStandardAssets.CrossPlatformInput;
                 attack[3] = Input.GetButtonDown("Y" + playerInput);
             }
 
-        if (!attack[4])
-        {
-            //block
+             if (!attack[4])
+             {
+            //headbutt?
             // Read the input in Update so button presses aren't missed.
-            attack[4] = Input.GetButton("XBox LBumper" + playerInput) || Input.GetButton("XBox RBumper" + playerInput);
-        }
+            attack[4] = Input.GetButtonDown("LStickClick" + playerInput) || Input.GetButtonDown("RStickClick" + playerInput);
+            attack[4] = Input.GetButtonDown("LStickClick" + playerInput) || Input.GetButtonDown("RStickClick" + playerInput);
+             }
 
 
     }
@@ -64,22 +68,18 @@ using UnityStandardAssets.CrossPlatformInput;
         {
             horizontal = Input.GetAxis("Horizontal" + playerInput);
             vertical = Input.GetAxis("Vertical" + playerInput);
-            //try doing block = lb rb, then changing it all to be like how done for crouch. cant figure out why showing the wrong anims.
-            //to make it less soul destroying replace attack 5 with headbutt and both block buttons together to do it.
-
-            //attack1 = CrossPlatformInputManager.GetButtonDown("A" + playerInput);
-            //attack2 = CrossPlatformInputManager.GetButtonDown("B" + playerInput);
-            //attack3 = CrossPlatformInputManager.GetButton("X" + playerInput);
-            //attack4 = CrossPlatformInputManager.GetButton("Y" + playerInput);
+            
+            block = Input.GetButton("XBox LBumper" + playerInput) || Input.GetButton("XBox RBumper" + playerInput);
 
             states.horizontal = horizontal;
             states.vertical = vertical;
+
+            states.block = block;
+
             states.attack1 = attack[0];
             states.attack2 = attack[1];
             states.attack3 = attack[2];
             states.attack4 = attack[3];
-
-            //block
             states.attack5 = attack[4];
 
             attack[0] = false;

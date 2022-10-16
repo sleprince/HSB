@@ -8,6 +8,9 @@ public class StateManager : MonoBehaviour {
 
     public float horizontal;
     public float vertical;
+
+    public bool block;
+
     public bool attack1;
     public bool attack2;
     public bool attack3;
@@ -137,9 +140,9 @@ public class StateManager : MonoBehaviour {
         attack2 = false;
         attack3 = false;
         attack4 = false;
-
-        //block
         attack5 = false;
+
+        block = false;
 
         //need to add any new attacks here too.
         crouch = false;
@@ -174,7 +177,7 @@ public class StateManager : MonoBehaviour {
                     case HandleDamageColliders.DamageType.light:
                         StartCoroutine(CloseImmortality(0.3f));
 
-                    if (!attack5)
+                    if (!block)
                     {
                         //play genric hit sound
                         Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
@@ -183,9 +186,9 @@ public class StateManager : MonoBehaviour {
                         {
                             // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
                             if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
+                            { Completed.SoundManager.instance.RandomizeSfx(charManager.players[0].CharSounds[1], charManager.players[0].CharSounds[2]); }
                             if (this.name == "player1")
-                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[1], CharSounds[2]); }
+                            { Completed.SoundManager.instance.RandomizeSfx(charManager.players[1].CharSounds[1], charManager.players[1].CharSounds[2]); }
                             JustBeenHit = true;
 
                             //3 second pause before more sounds
@@ -209,7 +212,7 @@ public class StateManager : MonoBehaviour {
                             );
                         StartCoroutine(CloseImmortality(1));
 
-                    if (!attack5)
+                    if (!block)
                     { //play genric hit sound
                         Completed.SoundManager.instance.RandomOnly(charManager.players[0].HitSounds);
 
@@ -220,9 +223,9 @@ public class StateManager : MonoBehaviour {
 
                             // heavy impact sounds here
                             if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                            { Completed.SoundManager.instance.RandomizeSfx(charManager.players[0].CharSounds[3], charManager.players[0].CharSounds[4], CharSounds[5]); }
                             if (this.name == "player1")
-                            { Completed.SoundManager.instance.RandomizeSfx(CharSounds[3], CharSounds[4], CharSounds[5]); }
+                            { Completed.SoundManager.instance.RandomizeSfx(charManager.players[1].CharSounds[3], charManager.players[1].CharSounds[4], CharSounds[5]); }
                             JustBeenHit = true;
 
                             //3 second pause before more sounds
@@ -245,7 +248,7 @@ public class StateManager : MonoBehaviour {
                    // break;
             }
 
-                if (attack5)
+                if (block)
                 {
                     IsBlocking = true;
                     dontMove = true;
@@ -277,8 +280,9 @@ public class StateManager : MonoBehaviour {
 
                 JustBeenHit = true;
                 IsHeavy = false;
+
                 IsBlocking = false;
-                attack5 = false;
+                block = false;
 
                 dontMove = false;
 

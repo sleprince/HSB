@@ -372,12 +372,14 @@ public class LevelManager : MonoBehaviour {
                 charM.players[1].score++;
                 targetPlayer = charM.players[1].playerStates;
                 levelUI.AddWinIndicator(1);
+                Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[12], charM.players[1].CharSounds[13], charM.players[1].CharSounds[14]);
             }
             else
             {
                 charM.players[0].score++;
                 targetPlayer = charM.players[0].playerStates;
                 levelUI.AddWinIndicator(0);
+                Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[12], charM.players[0].CharSounds[13], charM.players[0].CharSounds[14]);
             }
 
             retVal = charM.returnPlayerFromStates(targetPlayer);
