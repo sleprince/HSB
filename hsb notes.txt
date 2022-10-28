@@ -9,3 +9,7 @@ if (!states.attack4) for autofire mode
 
 OMG AFTER ALL THAT I JYST HAD THE TRANSTION ARROWS SET UP WRONG IN NEW ATTACKS ON ANIMATOR
 & HAD TO KNOW HOW TO COPY PASTE TRANSITIONS
+
+on old one animation is the same dont worry
+double punch is standard for both standing and crouching.
+study controls.

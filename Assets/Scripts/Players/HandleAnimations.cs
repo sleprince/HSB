@@ -5,6 +5,9 @@ public class HandleAnimations : MonoBehaviour
 {
 
     public Animator anim;
+
+    public bool JustPressed;
+
     StateManager states;
     CharacterManager charM;
 
@@ -49,7 +52,21 @@ public class HandleAnimations : MonoBehaviour
         
 
         HandleAttacks();
+
+        ResetSound();
+
     }
+
+    void ResetSound()
+
+    {
+        //if (StartCoroutine(TimeHater(6)))
+        {
+           // JustPressed = false;
+        }
+
+    }
+
 
     void HandleAttacks()
     { //change to for i = 0 to 3
@@ -68,6 +85,8 @@ public class HandleAnimations : MonoBehaviour
                     if (this.name == "player1")
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[8]); }
 
+                    StartCoroutine(TimeHater(3));
+
                 }
             }
 
@@ -75,14 +94,27 @@ public class HandleAnimations : MonoBehaviour
             {
                 attacks[1].attack = true;
                 anim.SetBool("Attack2", attacks[1].attack);
+                //use if JustAnimated here for setbool to make it consistent in same way anims.
 
                 if (!AnimatorIsPlaying("Punch A"))
                 {
-                    //kick 2
-                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
-                    if (this.name == "player1")
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[9]); }
+                    if (!JustPressed)
+                    {
+                        //kick 2
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[9]); }
+
+                        JustPressed = true;
+                        StartCoroutine(TimeHater(0.5f));
+                    }
+
+                    else
+                    {
+                        
+                        //JustPressed = false;
+                    }
 
                 }
             }
@@ -173,6 +205,12 @@ public class HandleAnimations : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         anim.SetBool(name, false);
+    }
+
+    IEnumerator TimeHater(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        JustPressed = false;
     }
 }
 
