@@ -53,17 +53,6 @@ public class HandleAnimations : MonoBehaviour
 
         HandleAttacks();
 
-        ResetSound();
-
-    }
-
-    void ResetSound()
-
-    {
-        //if (StartCoroutine(TimeHater(6)))
-        {
-           // JustPressed = false;
-        }
 
     }
 
@@ -74,32 +63,38 @@ public class HandleAnimations : MonoBehaviour
         {
             if (states.attack1)
             {
-                attacks[0].attack = true;
-                anim.SetBool("Attack1", attacks[0].attack);
-                //kick sfx
 
-                if (!AnimatorIsPlaying("Punch B") || !AnimatorIsPlaying("Kick"))
+
+                if (!JustPressed)
                 {
+                    attacks[0].attack = true;
+                    anim.SetBool("Attack1", attacks[0].attack);
+                    //kick sfx
+
+
                     if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[8]); }
                     if (this.name == "player1")
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[8]); }
 
-                    StartCoroutine(TimeHater(3));
+                    JustPressed = true;
+                    StartCoroutine(TimeHater(0.5f));
 
                 }
             }
 
             if (states.attack2)
             {
-                attacks[1].attack = true;
-                anim.SetBool("Attack2", attacks[1].attack);
-                //use if JustAnimated here for setbool to make it consistent in same way anims.
 
-                if (!AnimatorIsPlaying("Punch A"))
-                {
+
+
                     if (!JustPressed)
                     {
+                        attacks[1].attack = true;
+                        anim.SetBool("Attack2", attacks[1].attack);
+                        //use if JustAnimated here for setbool to make it consistent in same way anims.
+
+
                         //kick 2
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                         { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
@@ -110,27 +105,27 @@ public class HandleAnimations : MonoBehaviour
                         StartCoroutine(TimeHater(0.5f));
                     }
 
-                    else
-                    {
-                        
-                        //JustPressed = false;
-                    }
 
-                }
+
             }
 
             if (states.attack3)
             {
-                attacks[2].attack = true;
-                anim.SetBool("Attack3", attacks[2].attack);
 
-                if (!AnimatorIsPlaying("Punch B"))
+
+                if (!JustPressed)
                 {
+                    attacks[2].attack = true;
+                    anim.SetBool("Attack3", attacks[2].attack);
+
                     //punch
                     if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[10]); }
                     if (this.name == "player1")
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[10]); }
+
+                    JustPressed = true;
+                    StartCoroutine(TimeHater(0.5f));
 
                 }
             }

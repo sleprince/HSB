@@ -63,10 +63,10 @@ namespace Completed
             int randomIndex = Random.Range(0, clips.Length);
 
 			//Choose a random pitch to play back our clip at between our high and low pitch ranges.
-			float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+			//float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
 			//Set the pitch of the audio source to the randomly chosen pitch.
-			efxSource.pitch = randomPitch;
+			//efxSource.pitch = randomPitch;
             //musicSource.pitch = randomPitch;
 
             //Set the clip to the clip at our randomly chosen index.
@@ -85,7 +85,7 @@ namespace Completed
             int randomIndex = Random.Range(0, clips.Length);
 
             //Choose a random pitch to play back our clip at between our high and low pitch ranges.
-            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+            //float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
             //Set the pitch of the audio source to the randomly chosen pitch.
            // efxSource2.pitch = randomPitch;
@@ -106,10 +106,10 @@ namespace Completed
 			int randomIndex = Random.Range(0, clips.Length);
 
 			//Choose a random pitch to play back our clip at between our high and low pitch ranges.
-			float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+			//float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
 			//Set the pitch of the audio source to the randomly chosen pitch.
-			efxSource.pitch = randomPitch;
+			//efxSource.pitch = randomPitch;
 			//musicSource.pitch = randomPitch;
 
 			//Set the clip to the clip at our randomly chosen index.

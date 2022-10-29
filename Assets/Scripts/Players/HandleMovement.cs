@@ -10,9 +10,12 @@ public class HandleMovement : MonoBehaviour {
     CharacterManager charM;
 
     public float acceleration = 30;
-    public float airAcceleration = 25;
+    public float airAcceleration = 25; //not used?
     public float maxSpeed = 60;
-    public float jumpSpeed = 5;
+
+    
+    private float jumpSpeed = 9; //orignally = 5
+
     public float jumpDuration = 5;
 
     public GameObject Character;
