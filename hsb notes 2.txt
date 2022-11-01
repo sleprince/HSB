@@ -22,3 +22,13 @@ p1 x -2.6 y 0.02844228 z -7.2
 p2 x -1.15
 
 room for random or extra characters at bottom
+
+the bit of code that makes character names appear in select screen has been stashed or deleted?
+
+bring the characters over from previous screen and have them with background of level changing.
+
+needs to not change anything of charm pl interfaces.
+ACTUALLY ADD LEVELS TO CHARACTER MANAGER NEW LIST ON THERE SHOULD SOLVE 
+add string to levelmanager items of level_1 etc load level + levels.levelid
+
+working loads level with chosen peeps.
