@@ -291,7 +291,7 @@ public class SelectScreenManager : MonoBehaviour
         else
         {
             //here is where I should change it, to loading level select screen for 2Player mode.
-            MySceneManager.GetInstance().RequestLevelLoad(SceneType.prog, "level_select");
+            MySceneManager.GetInstance().RequestLevelLoad(SceneType.prog, "level_1");
         }
 
     }
