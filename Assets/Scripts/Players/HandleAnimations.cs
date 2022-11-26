@@ -71,11 +71,16 @@ public class HandleAnimations : MonoBehaviour
                     anim.SetBool("Attack1", attacks[0].attack);
                     //kick sfx
 
+                    //if(!states.crouch)
+                    //{
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[8]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[8]); }
 
-                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[8]); }
-                    if (this.name == "player1")
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[8]); }
+
+                    //}
+
 
                     JustPressed = true;
                     StartCoroutine(TimeHater(0.5f));
@@ -96,10 +101,14 @@ public class HandleAnimations : MonoBehaviour
 
 
                         //kick 2
+
+                        if(!states.crouch)
+                        { 
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                         { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
                         if (this.name == "player1")
                         { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[9]); }
+                        }
 
                         JustPressed = true;
                         StartCoroutine(TimeHater(0.5f));
@@ -119,10 +128,14 @@ public class HandleAnimations : MonoBehaviour
                     anim.SetBool("Attack3", attacks[2].attack);
 
                     //punch
+
+                    if (!states.crouch)
+                    { 
                     if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[10]); }
                     if (this.name == "player1")
                     { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[10]); }
+                    }
 
                     JustPressed = true;
                     StartCoroutine(TimeHater(0.5f));
@@ -138,10 +151,14 @@ public class HandleAnimations : MonoBehaviour
                 if (!AnimatorIsPlaying("Grapple"))
                 {
                     //punch2
-                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[11]); }
-                    if (this.name == "player1")
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[11]); }
+
+                    if (!states.crouch)
+                    {
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[11]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[11]); }
+                    }
 
                 }
             }
@@ -153,11 +170,14 @@ public class HandleAnimations : MonoBehaviour
 
                 if (!AnimatorIsPlaying("Grapple"))
                 {
-                    //headbutt sfx
-                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[0]); }
-                    if (this.name == "player1")
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[0]); }
+
+                    if (!states.crouch)
+                    {    //headbutt sfx
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[0]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[0]); }
+                    }
 
                 }
             }
