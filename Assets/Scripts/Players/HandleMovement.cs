@@ -22,7 +22,7 @@ public class HandleMovement : MonoBehaviour {
 
     float actualSpeed;
     bool justJumped;
-    bool canVariableJump;
+    public bool canVariableJump;
     float jmpTimer;
 
     //depricated
@@ -38,7 +38,7 @@ public class HandleMovement : MonoBehaviour {
 
     void Awake()
     {
-        //if I need to do anything in loading.
+        instance = this;
 
     }
 
@@ -158,5 +158,11 @@ public class HandleMovement : MonoBehaviour {
             rb.velocity = direction;
             yield return null;
         }
+    }
+
+    public static HandleMovement instance;
+    public static HandleMovement GetInstance() //all of this is so that I can call this script from objects that do not have it attached.
+    {
+        return instance;
     }
 }

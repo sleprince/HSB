@@ -7,9 +7,11 @@ public class HandleAnimations : MonoBehaviour
     public Animator anim;
 
     public bool JustPressed;
+    public bool IsJumping;
 
     StateManager states;
     CharacterManager charM;
+    HandleMovement Move;
 
    // public float attackRate = .3f;
     public AttacksBase[] attacks = new AttacksBase[5];
@@ -19,6 +21,7 @@ public class HandleAnimations : MonoBehaviour
         states = GetComponent<StateManager>();
         anim = GetComponentInChildren<Animator>();
         charM = CharacterManager.GetInstance(); //for sounds
+        Move = HandleMovement.GetInstance();
     }
 
     void FixedUpdate()
@@ -83,7 +86,7 @@ public class HandleAnimations : MonoBehaviour
 
 
                     JustPressed = true;
-                    StartCoroutine(TimeHater(0.5f));
+                    StartCoroutine(TimeHater(0.8f));
 
                 }
             }
@@ -102,12 +105,13 @@ public class HandleAnimations : MonoBehaviour
 
                         //kick 2
 
-                        if(!states.crouch)
-                        { 
-                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
-                        if (this.name == "player1")
-                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[9]); }
+                        if (!JustPressed && !states.crouch && states.onGround)
+                    { 
+                                if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                                { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[9]); }
+                                if (this.name == "player1")
+                                { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[9]); }
+
                         }
 
                         JustPressed = true;
@@ -129,12 +133,13 @@ public class HandleAnimations : MonoBehaviour
 
                     //punch
 
-                    if (!states.crouch)
+                    if (!JustPressed && !states.crouch && states.onGround)
                     { 
-                    if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[10]); }
-                    if (this.name == "player1")
-                    { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[10]); }
+                        if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[10]); }
+                        if (this.name == "player1")
+                        { Completed.SoundManager.instance.RandomizeSfx(charM.players[1].CharSounds[10]); }
+
                     }
 
                     JustPressed = true;
@@ -152,7 +157,7 @@ public class HandleAnimations : MonoBehaviour
                 {
                     //punch2
 
-                    if (!states.crouch)
+                    if (!JustPressed && !states.crouch && states.onGround)
                     {
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                         { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[11]); }
@@ -171,7 +176,7 @@ public class HandleAnimations : MonoBehaviour
                 if (!AnimatorIsPlaying("Grapple"))
                 {
 
-                    if (!states.crouch)
+                    if (!JustPressed && !states.crouch && states.onGround)
                     {    //headbutt sfx
                         if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                         { Completed.SoundManager.instance.RandomizeSfx(charM.players[0].CharSounds[0]); }
@@ -213,6 +218,8 @@ public class HandleAnimations : MonoBehaviour
         anim.SetBool("Attack5", false);
 
         anim.SetBool("Jump", true);
+        IsJumping = true;
+
         StartCoroutine(CloseBoolInAnim("Jump"));
     }
 
