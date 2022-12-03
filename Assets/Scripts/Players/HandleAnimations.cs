@@ -66,12 +66,13 @@ public class HandleAnimations : MonoBehaviour
         {
             if (states.attack1)
             {
+                attacks[0].attack = true;
+                anim.SetBool("Attack1", attacks[0].attack);
 
 
                 if (!JustPressed)
                 {
-                    attacks[0].attack = true;
-                    anim.SetBool("Attack1", attacks[0].attack);
+
                     //kick sfx
 
                     //if(!states.crouch)
@@ -93,14 +94,14 @@ public class HandleAnimations : MonoBehaviour
 
             if (states.attack2)
             {
+                attacks[1].attack = true;
+                anim.SetBool("Attack2", attacks[1].attack);
+                //use if JustAnimated here for setbool to make it consistent in same way anims.
 
 
-
-                    if (!JustPressed)
+                if (!JustPressed)
                     {
-                        attacks[1].attack = true;
-                        anim.SetBool("Attack2", attacks[1].attack);
-                        //use if JustAnimated here for setbool to make it consistent in same way anims.
+
 
 
                         //kick 2
@@ -124,12 +125,12 @@ public class HandleAnimations : MonoBehaviour
 
             if (states.attack3)
             {
-
+                attacks[2].attack = true;
+                anim.SetBool("Attack3", attacks[2].attack);
 
                 if (!JustPressed)
                 {
-                    attacks[2].attack = true;
-                    anim.SetBool("Attack3", attacks[2].attack);
+
 
                     //punch
 
