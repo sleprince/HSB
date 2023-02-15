@@ -9,7 +9,7 @@ public class CharacterManager : MonoBehaviour {
     public int numberOfUsers;
     public List<PlayerBase> players = new List<PlayerBase>(); //the list with all our players and player types
     
-    //the list were we hold anything we need to know for each separate character,
+    //the list where we hold anything we need to know for each separate character,
     //for now, it's their id and their corresponding prefab
     public List<CharacterBase> characterList = new List<CharacterBase>();
 

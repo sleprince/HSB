@@ -155,7 +155,7 @@ MonoBehaviour:
     m_CategoryList: []
     m_OverrideEntries:
     - m_Name: Crouch block_0
-      m_Hash: -906760679
+      m_Hash: 166981145
       m_Sprite: {fileID: 3346380537404280787, guid: 1726a84a77c282c458c5156aa5d8cf26,
         type: 3}
       m_FromMain: 1

@@ -8,7 +8,7 @@ namespace Completed
 		public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
         public AudioSource efxSource2;
         public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
-		public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
+		public static SoundManager instance = null;     //Needed as part of the functionality in Awake so there can only be one instance.             
 		public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
 		public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
         public bool isPlaying = false;

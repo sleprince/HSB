@@ -232,7 +232,7 @@ public class SelectScreenManager : MonoBehaviour
 
             //pass the character sounds to the character manager so that we can use them in the level.
             pl.playerBase.CharSounds =
-    charManager.returnCharacterWithID(pl.activePotrait.characterId).CharSounds;
+                charManager.returnCharacterWithID(pl.activePotrait.characterId).CharSounds;
 
 
             //trying to make global character identification.

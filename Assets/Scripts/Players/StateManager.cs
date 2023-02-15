@@ -184,7 +184,7 @@ public class StateManager : MonoBehaviour {
 
                         if (!JustBeenHit)
                         {
-                            // light impact sounds here, preceed by light punch sound then short break 0.5 seconds maybe. maybe make them play only every 2 or 3 hits
+
                             if (this.name == "player0") //making both characters able to make non OneShot dounds at once.
                             { Completed.SoundManager.instance.RandomizeSfx(charManager.players[0].CharSounds[1], charManager.players[0].CharSounds[2]); }
                             if (this.name == "player1")
